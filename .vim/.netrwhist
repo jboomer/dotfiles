@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/home/jasper/Projects/exercism/python/largest-series-product'
+let g:netrw_dirhist_2='/home/jasper/Projects/avr/.git'
+let g:netrw_dirhist_3='/home/jasper/Projects/clones/PyModel/samples/Socket'
