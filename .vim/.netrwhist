@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/jasper/Projects/exercism/python/largest-series-product'
 let g:netrw_dirhist_2='/home/jasper/Projects/avr/.git'
 let g:netrw_dirhist_3='/home/jasper/Projects/clones/PyModel/samples/Socket'
+let g:netrw_dirhist_4='/home/jasper/Projects/nspyre/ethercat/SOEM1.3.0'
+let g:netrw_dirhist_5='/home/jasper/Projects/personal/tuner'
+let g:netrw_dirhist_6='/home/jasper/Projects/tests/aanvragen'
+let g:netrw_dirhist_7='/home/jasper/Projects/clones/PyModel/samples/StackResult'
+let g:netrw_dirhist_8='/home/jasper/Projects/clones/PyModel/samples/WebApplication'

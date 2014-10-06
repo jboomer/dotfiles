@@ -109,5 +109,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#Set TEXMFHOME
+export TEXMFHOME=~/texmf/
+
+#Disable system bell
+xset b off
+
 #Run archey
 archey
+
+#Add PyModel to PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:~/Projects/clones/PyModel/pymodel/

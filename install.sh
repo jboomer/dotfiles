@@ -1,5 +1,11 @@
 #! /bin/bash
 
 mkdir ~/dotfiles.old
-#TODO: Move all current dotfiles to dotfiles.old
-#TODO: Make symlinks to dotfiles in dotfiles/
+mv ~/.vimrc ~/dotfiles.old/
+mv ~/.bashrc ~/dotfiles.old/
+mv ~/.vim/ ~/dotfiles.old/
+
+ln -s .vimrc ~/.vimrc
+ln -s .bashrc ~/.bashrc
+ln -s .vim/ ~/.vim/
+
