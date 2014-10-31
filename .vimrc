@@ -1,4 +1,4 @@
-" configure expanding of tabs for various file types
+" General settings
 syntax on
 set number
 set showcmd
@@ -9,16 +9,12 @@ set noexpandtab
 set showtabline=2
 set nocompatible
 
-
+" Language specific settings
 au BufRead,BufNewFile *.py set expandtab 
 au BufRead,BufNewFile Makefile* set tabstop=8
 au BufRead,BufNewFile *.java set tabstop=2
 au BufRead,BufNewFile *.tex set tabstop=2
 au BufRead,BufNewFile *.cpp set tabstop=2
-
-
-" Map Ctrl+P for executing Python scripts
-map <C-p> : w<CR> : ! python %<CR>
 
 " Map F9 for saving and running make
  map <f9> : w<CR> : ! make<CR>

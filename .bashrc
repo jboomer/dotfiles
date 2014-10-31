@@ -118,5 +118,6 @@ xset b off
 #Run archey
 archey
 
-#Add PyModel to PYTHONPATH
-export PYTHONPATH=$PYTHONPATH:~/Projects/clones/PyModel/pymodel/
+#PATH extensions
+export PYTHONPATH=$PYTHONPATH:~/Projects/downloads/PyModel/pymodel/
+export PATH=~/Projects/downloads/depot_tools:$PATH
