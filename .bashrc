@@ -109,15 +109,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#Set TEXMFHOME
-export TEXMFHOME=~/texmf/
-
-#Disable system bell
-xset b off
-
-#Run archey
-archey
-
-#PATH extensions
-export PYTHONPATH=$PYTHONPATH:~/Projects/downloads/PyModel/pymodel/
-export PATH=~/Projects/downloads/depot_tools:$PATH
