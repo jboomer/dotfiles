@@ -8,13 +8,19 @@ set shiftwidth=4
 set noexpandtab
 set showtabline=2
 set nocompatible
+set ignorecase
+set smartcase
 
 " Language specific settings
 au BufRead,BufNewFile *.py set expandtab 
+au BufRead,BufNewFile *.c set expandtab 
+au BufRead,BufNewFile *.cc set expandtab 
 au BufRead,BufNewFile Makefile* set tabstop=8
 au BufRead,BufNewFile *.java set tabstop=2
 au BufRead,BufNewFile *.tex set tabstop=2
 au BufRead,BufNewFile *.cpp set tabstop=2
+au BufRead,BufNewFile *.cc set tabstop=2
+au BufRead,BufNewFile *.[ch] set tabstop=2
 
 " Map F9 for saving and running make
  map <f9> : w<CR> : ! make<CR>
@@ -44,5 +50,6 @@ autocmd FileType vim              let b:comment_leader = '" '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
-
-
+" Enhanced tab completion
+set wildmode=longest,list,full
+set wildmenu
