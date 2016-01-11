@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/jasper/workspaces/im_tellus/numpad-test'
-let g:netrw_dirhist_2='/home/jasper/workspaces/general/im_meta_kvgm/recipes-f37/f37miscfiles'
-let g:netrw_dirhist_3='/home/jasper/workspaces/im_tellus/im_vt2-rev3'
+let g:netrw_dirhist_cnt =0

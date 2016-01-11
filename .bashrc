@@ -114,3 +114,7 @@ alias make='colormake'
 
 # Kvgm makefile directory
 export _MECH_MAKE_WS=~/workspaces/general/kvgm_makefile
+
+# Start Tmuxinator
+source ~/scripts/tmuxinator.sh
+export EDITOR=vim
