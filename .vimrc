@@ -119,5 +119,9 @@ set wildmenu
 let g:DoxygenToolkit_commentType = "C++"
 " let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
 
+" YCM settings
+set completeopt-=preview
+
+let g:ycm_confirm_extra_conf=0
 " Highlight doxygen syntax
 let g:load_doxygen_syntax=1
