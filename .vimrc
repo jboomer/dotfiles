@@ -91,6 +91,11 @@ set wildmenu
 " Doxygen toolkit settings
 let g:DoxygenToolkit_commentType = "C++"
 
+" YCM settings
+set completeopt-=preview
+
+let g:ycm_confirm_extra_conf=0
+
 " map F6 to add Doxygen comments
 map <f6> :Dox<CR>
 
