@@ -14,44 +14,57 @@ Plugin 'VundleVim/Vundle.vim'
 " YouCompleteMe plugin
 Plugin 'Valloric/YouCompleteMe'
 
+" MISC plugin for xolox plugins
+Plugin 'xolox/vim-misc'
+
+" Easytags
+Plugin 'xolox/vim-easytags'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
-" Use generic cpp configuration file:
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" YCM SETTINGS
 
+" Use generic cpp configuration file:
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Whitelist YCM enabled
+let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'python' : 1}
+
+" White/black list conf files
+let g:ycm_extra_conf_globlist = ['~/workspaces/*']
+
+" Use include path relative to vim working dir
+let g:ycm_filepath_completion_use_working_dir = 1
+
+" EASYTAGS SETTINGS
+let g:easytags_auto_highlight = 0
+
+
+" Turn off preview
+set completeopt-=preview
 
 " General settings
 syntax on
 set number
 set showcmd
-set tabstop=4
+set tabstop=2
 set autoindent
-set shiftwidth=4
-set noexpandtab
+set shiftwidth=2
+set expandtab
 set showtabline=2
 set nocompatible
 set ignorecase
 set smartcase
+set backspace=indent,eol,start
 
-" Language specific settings
-au Filetype python set expandtab 
-au BufRead,BufNewFile *.c set expandtab 
-au BufRead,BufNewFile *.cc set expandtab 
-au BufRead,BufNewFile *.yml set expandtab 
-au BufRead,BufNewFile Makefile* set tabstop=8
-au BufRead,BufNewFile *.java set tabstop=2
-au BufRead,BufNewFile *.tex set tabstop=2
-au BufRead,BufNewFile *.cpp set tabstop=2
-au BufRead,BufNewFile *.cc set tabstop=2
-au BufRead,BufNewFile *.[ch] set tabstop=2
-au BufRead,BufNewFile *.yml set tabstop=2
-
-" Map F9 for saving and running make
- map <f9> : w<CR> : ! make<CR>
+" Language specific settings other than global
+au BufRead,BufNewFile Makefile set filetype=makefile 
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
+autocmd FileType makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
 " Map gj and gk to j and k for navigating wrapped lines
 map j  gj
@@ -60,6 +73,9 @@ map k  gk
 " Follow tag in new tab or vert split
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" ReIndex
+map <C-j> :! cscope -R -b<CR>:cs reset<CR>
 
 " Tab navigation shortcuts
 cnoreabbrev <expr> tn getcmdtype() == ":" && getcmdline() == 'tn' ? 'tabnew' : 'tn'
@@ -95,6 +111,8 @@ let g:DoxygenToolkit_commentType = "C++"
 set completeopt-=preview
 
 let g:ycm_confirm_extra_conf=0
+" Highlight doxygen syntax
+let g:load_doxygen_syntax=1
 
 " map F6 to add Doxygen comments
 map <f6> :Dox<CR>
