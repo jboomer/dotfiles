@@ -1,4 +1,3 @@
-" B
 " Settings for Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -84,6 +83,17 @@ cnoreabbrev <expr> te getcmdtype() == ":" && getcmdline() == 'te' ? 'tabedit' : 
 map <f7> :tabp<CR>
 map <f8> :tabn<CR>
 
+" Enhanced incrementing numbers
+function! Incr()
+  let a = line('.') - line("'<")
+  let c = virtcol("'<")
+  if a > 0
+    execute 'normal! '.c.'|'.a."\<C-a>"
+  endif
+  normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
+
 " Pathogen for easy plugin installs
 execute pathogen#infect()
 
@@ -107,10 +117,7 @@ set wildmenu
 
 " Doxygen toolkit settings
 let g:DoxygenToolkit_commentType = "C++"
+" let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
 
 " Highlight doxygen syntax
 let g:load_doxygen_syntax=1
-
-" map F6 to add Doxygen comments
-map <f6> :Dox<CR>
-

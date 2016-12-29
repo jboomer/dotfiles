@@ -109,6 +109,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Set vi-style mode!
+set -o vi
+
 # Default colormake
 alias make='colormake'
 
@@ -118,3 +121,17 @@ export _MECH_MAKE_WS=~/workspaces/general/kvgm_makefile
 # Start Tmuxinator
 source ~/scripts/tmuxinator.sh
 export EDITOR=vim
+
+# Colorized man pages ftw!
+man() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+      man "$@"
+}
+
