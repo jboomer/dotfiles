@@ -15,10 +15,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 " MISC plugin for xolox plugins
-Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-misc'
 
 " Easytags
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,9 +40,10 @@ let g:ycm_extra_conf_globlist = ['~/workspaces/*']
 " Use include path relative to vim working dir
 let g:ycm_filepath_completion_use_working_dir = 1
 
-" EASYTAGS SETTINGS
-let g:easytags_auto_highlight = 0
+let g:ycm_confirm_extra_conf=0
 
+" EASYTAGS SETTINGS
+" let g:easytags_auto_highlight = 0
 
 " Turn off preview
 set completeopt-=preview
@@ -70,18 +71,25 @@ autocmd FileType makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpand
 map j  gj
 map k  gk
 
+" Netrw file explorer settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 80
+
 " Follow tag in new tab or vert split
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " ReIndex
-map <C-j> :! cscope -R -b<CR>:cs reset<CR>
+map <C-j> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
 
 " Tab navigation shortcuts
 cnoreabbrev <expr> tn getcmdtype() == ":" && getcmdline() == 'tn' ? 'tabnew' : 'tn'
 cnoreabbrev <expr> te getcmdtype() == ":" && getcmdline() == 'te' ? 'tabedit' : 'te'
 map <f7> :tabp<CR>
 map <f8> :tabn<CR>
+map <f3> 1gt
 
 " Enhanced incrementing numbers
 function! Incr()
@@ -119,9 +127,5 @@ set wildmenu
 let g:DoxygenToolkit_commentType = "C++"
 " let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
 
-" YCM settings
-set completeopt-=preview
-
-let g:ycm_confirm_extra_conf=0
 " Highlight doxygen syntax
 let g:load_doxygen_syntax=1
