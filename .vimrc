@@ -14,6 +14,9 @@ Plugin 'VundleVim/Vundle.vim'
 " YouCompleteMe plugin
 Plugin 'Valloric/YouCompleteMe'
 
+" Navigate between vim windows and tmux panes
+Plugin 'christoomey/vim-tmux-navigator'
+
 " MISC plugin for xolox plugins
 " Plugin 'xolox/vim-misc'
 
@@ -82,7 +85,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " ReIndex
-map <C-j> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
+map <C-i> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
 
 " Tab navigation shortcuts
 cnoreabbrev <expr> tn getcmdtype() == ":" && getcmdline() == 'tn' ? 'tabnew' : 'tn'
