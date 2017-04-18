@@ -113,8 +113,13 @@ fi
 set -o vi
 
 # Start Tmuxinator
-source ~/scripts/tmuxinator.sh
 export EDITOR=vim
+source ~/scripts/tmuxinator.sh
+
+# Git TAB completion
+if [ -e ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
 
 # Colorized man pages ftw!
 man() {

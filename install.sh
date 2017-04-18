@@ -27,4 +27,5 @@ ln -s ${SCRIPT_DIR}/.vimrc ~/.vimrc
 ln -s ${SCRIPT_DIR}/.bashrc ~/.bashrc
 ln -s ${SCRIPT_DIR}/.tmux.conf ~/.tmux.conf
 ln -s ${SCRIPT_DIR}/.vim/ ~/.vim
+ln -s ${SCRIPT_DIR}/.git-completion.bash ~/.git-completion.bash
 
