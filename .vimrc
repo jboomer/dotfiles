@@ -17,11 +17,8 @@ Plugin 'Valloric/YouCompleteMe'
 " Navigate between vim windows and tmux panes
 Plugin 'christoomey/vim-tmux-navigator'
 
-" MISC plugin for xolox plugins
-" Plugin 'xolox/vim-misc'
-
-" Easytags
-" Plugin 'xolox/vim-easytags'
+"CtrlP to file navigate
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -38,7 +35,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'python' : 1}
 
 " White/black list conf files
-let g:ycm_extra_conf_globlist = ['~/workspaces/*']
+let g:ycm_extra_conf_globlist = ['/data/jasperb/*']
 
 " Use include path relative to vim working dir
 let g:ycm_filepath_completion_use_working_dir = 1
@@ -55,11 +52,11 @@ set completeopt-=preview
 syntax on
 set number
 set showcmd
-set tabstop=2
+set tabstop=4
 set autoindent
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
-set showtabline=2
+set showtabline=4
 set nocompatible
 set ignorecase
 set smartcase
@@ -127,8 +124,8 @@ set wildmode=longest,list,full
 set wildmenu
 
 " Doxygen toolkit settings
-let g:DoxygenToolkit_commentType = "C++"
-" let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+" Using eclipse (/** ... */) style for now, with no @brief statement
+let g:DoxygenToolkit_briefTag_pre = ""
 
 " Highlight doxygen syntax
 let g:load_doxygen_syntax=1

@@ -45,6 +45,11 @@ if has("cscope")
         cs add $CSCOPE_DB
     endif
 
+    " Add the pyscope database if it exists
+    if filereadable("pycscope.out")
+        cs add pycscope.out
+    endif
+
     " show msg when any other cscope db added
     set cscopeverbose  
 
