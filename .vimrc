@@ -42,9 +42,6 @@ let g:ycm_filepath_completion_use_working_dir = 1
 
 let g:ycm_confirm_extra_conf=0
 
-" EASYTAGS SETTINGS
-" let g:easytags_auto_highlight = 0
-
 " Turn off preview
 set completeopt-=preview
 
@@ -81,7 +78,7 @@ let g:netrw_winsize = 80
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" ReIndex
+" ReIndex (Note: Ctrl I is the same as TAB in vim!)
 map <C-i> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
 
 " Tab navigation shortcuts
@@ -113,7 +110,7 @@ colorscheme blugrine
 autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
 autocmd FileType sh,ruby,python   let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
+autocmd FileType tex,matlab       let b:comment_leader = '% '
 autocmd FileType mail             let b:comment_leader = '> '
 autocmd FileType vim              let b:comment_leader = '" '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
@@ -129,3 +126,8 @@ let g:DoxygenToolkit_briefTag_pre = ""
 
 " Highlight doxygen syntax
 let g:load_doxygen_syntax=1
+
+" Grep alias
+command -nargs=1 Grep grep -rnI --exclude-dir={\.svn,\.git,\.hg} --exclude={cscope.out,pycscope.out,tags} <args> ./
+command -nargs=1 Igrep grep -rniI --exclude-dir={\.svn,\.git,\.hg} --exclude={cscope.out,pycscope.out,tags} <args> ./
+
