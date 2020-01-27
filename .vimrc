@@ -1,30 +1,20 @@
 " Settings for Vundle
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" YouCompleteMe plugin
-Plugin 'Valloric/YouCompleteMe'
-
-" Navigate between vim windows and tmux panes
-Plugin 'christoomey/vim-tmux-navigator'
-
-"CtrlP to file navigate
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+"
+call plug#begin('~/.vim/bundle')
+
+" YouCompleteMe plugin
+Plug 'Valloric/YouCompleteMe'
+
+" Navigate between vim windows and tmux panes
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
 
 " YCM SETTINGS
 
@@ -34,9 +24,6 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " Whitelist YCM enabled
 let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'python' : 1}
 
-" White/black list conf files
-let g:ycm_extra_conf_globlist = ['/data/jasperb/*']
-
 " Use include path relative to vim working dir
 let g:ycm_filepath_completion_use_working_dir = 1
 
@@ -45,8 +32,10 @@ let g:ycm_confirm_extra_conf=0
 " Turn off preview
 set completeopt-=preview
 
+" Add fuzzy file finder to runtime
+set rtp+=~/.fzf
+
 " General settings
-syntax on
 set number
 set showcmd
 set tabstop=4
@@ -65,8 +54,8 @@ autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
 autocmd FileType makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
 " Map gj and gk to j and k for navigating wrapped lines
-map j  gj
-map k  gk
+nnoremap j  gj
+nnoremap k  gk
 
 " Netrw file explorer settings
 let g:netrw_banner = 0
@@ -80,6 +69,9 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " ReIndex (Note: Ctrl I is the same as TAB in vim!)
 map <C-i> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
+
+" Fuzzy file finding
+nnoremap <C-p> :GitFiles<CR>
 
 " Tab navigation shortcuts
 cnoreabbrev <expr> tn getcmdtype() == ":" && getcmdline() == 'tn' ? 'tabnew' : 'tn'
@@ -98,9 +90,6 @@ function! Incr()
   normal `<
 endfunction
 vnoremap <C-a> :call Incr()<CR>
-
-" Pathogen for easy plugin installs
-execute pathogen#infect()
 
 " Color scheme
 set background=dark
