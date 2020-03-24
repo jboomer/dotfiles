@@ -14,6 +14,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'junegunn/fzf.vim'
 
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 " YCM SETTINGS
@@ -32,16 +34,12 @@ let g:ycm_confirm_extra_conf=0
 " Turn off preview
 set completeopt-=preview
 
-" Add fuzzy file finder to runtime
-set rtp+=~/.fzf
-
 " General settings
 set number
 set showcmd
 set tabstop=4
 set autoindent
 set shiftwidth=4
-set expandtab
 set showtabline=4
 set nocompatible
 set ignorecase
@@ -50,7 +48,7 @@ set backspace=indent,eol,start
 
 " Language specific settings other than global
 au BufRead,BufNewFile Makefile set filetype=makefile 
-autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 autocmd FileType makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
 " Map gj and gk to j and k for navigating wrapped lines
@@ -71,7 +69,7 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 map <C-i> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
 
 " Fuzzy file finding
-nnoremap <C-p> :GitFiles<CR>
+nnoremap <C-p> :Files<CR>
 
 " Tab navigation shortcuts
 cnoreabbrev <expr> tn getcmdtype() == ":" && getcmdline() == 'tn' ? 'tabnew' : 'tn'

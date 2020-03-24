@@ -112,20 +112,7 @@ fi
 # Set vi-style mode!
 set -o vi
 
-# Start Tmuxinator
 export EDITOR=vim
-source ~/scripts/tmuxinator.sh
-
-# Git TAB completion
-if [ -e ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
-
-# Setup dh-make if necessary
-if [ -f ~/.bashrc-dh-make ]; then
-  . ~/.bashrc-dh-make
-fi
-
 
 # Colorized man pages ftw!
 man() {
@@ -140,3 +127,5 @@ man() {
       man "$@"
 }
 
+
+source /home/jbo/.config/broot/launcher/bash/br
