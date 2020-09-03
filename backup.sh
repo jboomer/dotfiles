@@ -21,10 +21,3 @@ fi
 if [ -e ~/.tmux.conf ]; then
 	mv ~/.tmux.conf ~/dotfiles.old/
 fi
-
-# Create softlinks to dotfiles in this repo in the home directory
-ln -s ${SCRIPT_DIR}/.vimrc ~/.vimrc
-ln -s ${SCRIPT_DIR}/.bashrc ~/.bashrc
-ln -s ${SCRIPT_DIR}/.tmux.conf ~/.tmux.conf
-ln -s ${SCRIPT_DIR}/.vim/ ~/.vim
-

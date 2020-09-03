@@ -117,4 +117,3 @@ let g:load_doxygen_syntax=1
 " Grep alias
 command -nargs=1 Grep grep -rnI --exclude-dir={\.svn,\.git,\.hg} --exclude={cscope.out,pycscope.out,tags} <args> ./
 command -nargs=1 Igrep grep -rniI --exclude-dir={\.svn,\.git,\.hg} --exclude={cscope.out,pycscope.out,tags} <args> ./
-
