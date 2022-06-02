@@ -112,7 +112,7 @@ fi
 # Set vi-style mode!
 set -o vi
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # Colorized man pages ftw!
 man() {
@@ -127,5 +127,4 @@ man() {
       man "$@"
 }
 
-
-source /home/jbo/.config/broot/launcher/bash/br
+source ~/.noviflow_alias

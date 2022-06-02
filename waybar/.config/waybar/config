@@ -1,0 +1,34 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["network#wifi", "network#vpn", "battery"],
+    "network#wifi": {
+	    "interface": "wlp5s0",
+        "format-wifi": "{ifname} {ipaddr}/{cidr} ",
+        "format-ethernet": "{ifname} {ipaddr}{cidr} ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format-wifi": "🔒",
+        "format-ethernet": "🔒",
+        "format-disconnected": "🔓",
+		"tooltip-format" : "vpn ON",
+		"tooltip-format-disconnected" : "vpn OFF"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% {icon}",
+        "format-plugged": "{icon}⚡",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d  %H:%M}"
+    }
+}

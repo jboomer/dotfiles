@@ -35,7 +35,7 @@ let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
 
 " General settings
-set number
+set number relativenumber
 set showcmd
 set tabstop=4
 set autoindent
@@ -50,6 +50,10 @@ set backspace=indent,eol,start
 au BufRead,BufNewFile Makefile set filetype=makefile 
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 autocmd FileType makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
+
+" Leader key
+nnoremap , <Nop>
+let mapleader = ","
 
 " Map gj and gk to j and k for navigating wrapped lines
 nnoremap j  gj
@@ -66,7 +70,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " ReIndex (Note: Ctrl I is the same as TAB in vim!)
-map <C-i> :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
+nnoremap <leader>i :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
 
 " Fuzzy file finding
 nnoremap <C-p> :Files<CR>

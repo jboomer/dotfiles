@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include /etc/sway/config.d/*
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,7 +16,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term termite
+set $term alacritty
 # Screen lock
 set $lock swaylock -e -f -i /home/jbo/Pictures/wallpaper/lock001.jpg
 
@@ -28,18 +30,18 @@ font SourceCodePro 10
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 ## Uncomment to pipe some stuff into fzf 
-#set $menu termite --name=launcher -c ~/.config/termite/launcher.config -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'"
+#set $menu $term --class=launcher --config-file ~/.config/alacritty/alacritty.yml -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'"
 
-## Uncomment to use sway-launcher-desktop (reads desktop files but does not work that well with GUI apps)
-set $menu env TERMINAL_COMMAND="termite -e" termite --name=launcher -e /usr/bin/sway-launcher-desktop
+## Uncomment to use sway-launcher-desktop 
+set $menu exec $term --class=launcher -e /usr/bin/sway-launcher-desktop
 
 # Window configurations
 for_window [app_id="^launcher$"] floating enable, border pixel 5, sticky enable
-for_window [app_id="KeePassXC$"] floating enable, sticky enable, resize set width 950 px height 450 px
+for_window [app_id="KeePassXC$"] floating enable, sticky enable, resize set width 950 px height 850 px
 default_border pixel 2
 
 ## Wallpaper
-output * bg /home/jbo/Pictures/wallpaper/mtn002.png fill
+output * bg /home/jbo/Pictures/wallpaper/mtn006.jpg fill
 
 #
 # Example configuration:
@@ -48,10 +50,9 @@ output * bg /home/jbo/Pictures/wallpaper/mtn002.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-#output "Acer Technologies k222HQL T5XAA0062423" pos 0 0 res 1920x1080
-#output "Acer Technologies S220HQL LTK0R0292442" pos 1920 0 res 1920x1080
-output "Acer Technologies Acer K222HQL T1LAA0054226" pos 1920 0 res 1920x1080
-output eDP-1 pos 0 0 res 1920x1080
+# set $output1 eDP-1
+# set $output2 "Dell Inc. DELL P2214H KW14V5543HCL"
+# set $output3 "Acer Technologies Acer K222HQL T1LAA0054226"
 
 bindswitch --reload lid:on output eDP-1 disable
 bindswitch --reload lid:off output eDP-1 enable
@@ -124,30 +125,46 @@ input * {
 #
 # Workspaces:
 #
+	
+	set $ws1 1
+	set $ws2 2
+	set $ws3 3
+	set $ws4 4
+	set $ws5 5
+	set $ws6 6
+	set $ws7 7
+	set $ws8 8
+	set $ws9 9
+	set $ws10 10
+
     # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Automatic output detection
+	exec_always "pkill kanshi; exec kanshi"
+
+
 #
 # Layout stuff:
 #
@@ -194,6 +211,13 @@ bindsym $mod+Shift+i resize shrink height 10px
 bindsym $mod+Shift+o resize grow width 10px
 
 #
+# Actions:
+#
+
+# Screenshot
+bindsym $mod+Shift+s exec --no-startup-id grim -g "$(slurp)" ~/Pictures/scrots/screenshot-$(date +'%Y%m%d-%H%M%S').png
+
+#
 # System mode
 #
 set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
@@ -213,31 +237,33 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 
 # Multimedia
-bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
-bindsym --locked XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Brightness controls
 bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
 
+# Launch common applications
+set $mode_programs Programs: (f)irefox, (r)anger, (s)lack, (k)eepass, (c)hromium
+mode "$mode_programs" {
+        bindsym f  exec firefox; mode "default"
+        bindsym r  exec $term -e ranger; mode "default"
+        bindsym s  exec slack; mode "default"
+        bindsym k  exec keepassxc; mode "default"
+        bindsym c  exec chromium; mode "default"
+        bindsym Return  mode "default"
+        bindsym Escape  mode "default"
+}
+bindsym $mod+p mode "$mode_programs"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+# gaps
+gaps inner 5
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+bar { 
+	swaybar_command waybar
+	workspace_buttons yes
 }
 
-include /etc/sway/config.d/*
