@@ -32,3 +32,4 @@
         "format": "{:%Y-%m-%d  %H:%M}"
     }
 }
+# Modules are greyed out, see: https://github.com/Alexays/Waybar/issues/1764

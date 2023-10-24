@@ -6,9 +6,6 @@ set nocompatible              " be iMproved, required
 "
 call plug#begin('~/.vim/bundle')
 
-" YouCompleteMe plugin
-Plug 'Valloric/YouCompleteMe'
-
 " Navigate between vim windows and tmux panes
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -16,20 +13,9 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'neovim/nvim-lspconfig'
+
 call plug#end()
-
-" YCM SETTINGS
-
-" Use generic cpp configuration file:
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-
-" Whitelist YCM enabled
-let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'python' : 1}
-
-" Use include path relative to vim working dir
-let g:ycm_filepath_completion_use_working_dir = 1
-
-let g:ycm_confirm_extra_conf=0
 
 " Turn off preview
 set completeopt-=preview
@@ -41,7 +27,6 @@ set tabstop=4
 set autoindent
 set shiftwidth=4
 set showtabline=4
-set nocompatible
 set ignorecase
 set smartcase
 set backspace=indent,eol,start
@@ -66,11 +51,11 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 80
 
 " Follow tag in new tab or vert split
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" ReIndex (Note: Ctrl I is the same as TAB in vim!)
-nnoremap <leader>i :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
+"map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+"
+"" ReIndex (Note: Ctrl I is the same as TAB in vim!)
+"nnoremap <leader>i :! cscope -R -b<CR>:cs reset<CR>:! ctags -R<CR>
 
 " Fuzzy file finding
 nnoremap <C-p> :Files<CR>
