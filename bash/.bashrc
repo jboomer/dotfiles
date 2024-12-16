@@ -126,5 +126,3 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
       man "$@"
 }
-
-source ~/.noviflow_alias
