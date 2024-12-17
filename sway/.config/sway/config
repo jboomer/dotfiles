@@ -10,17 +10,19 @@ include /etc/sway/config.d/*
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
+
 # Screen lock
 set $lock swaylock -e -f -i /home/jbo/Pictures/wallpaper/lock001.jpg
 
-font SourceCodePro 10
+font "IBM Plex Mono Regular 10"
 
 #
 # Application launching
@@ -29,40 +31,37 @@ font SourceCodePro 10
 ## Uncomment to use dmenu (X Application)
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+## Uncomment to use bemenu
+#set $menu bemenu-run --no-exec | xargs swaymsg exec --
+
 ## Uncomment to pipe some stuff into fzf 
 #set $menu $term --class=launcher --config-file ~/.config/alacritty/alacritty.yml -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'"
 
 ## Uncomment to use sway-launcher-desktop 
-set $menu exec $term --class=launcher -e /usr/bin/sway-launcher-desktop
+#set $menu exec $term --title=launcher /usr/bin/sway-launcher-desktop
+
+## Uncomment to use fuzzel
+set $menu exec fuzzel
 
 # Window configurations
-for_window [app_id="^launcher$"] floating enable, border pixel 5, sticky enable
+for_window [title="^launcher$"] floating enable, border pixel 5, sticky enable
 for_window [app_id="KeePassXC$"] floating enable, sticky enable, resize set width 950 px height 850 px
 default_border pixel 2
 
 ## Wallpaper
-output * bg /home/jbo/Pictures/wallpaper/mtn006.jpg fill
+#output * bg /home/jbo/Pictures/wallpaper/mtn006.jpg fill
 
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-# set $output1 eDP-1
-# set $output2 "Dell Inc. DELL P2214H KW14V5543HCL"
-# set $output3 "Acer Technologies Acer K222HQL T1LAA0054226"
+# Outputs set by kanshi
 
 bindswitch --reload lid:on output eDP-1 disable
 bindswitch --reload lid:off output eDP-1 enable
 
 ### Idle configuration
 exec swayidle -w \
-         timeout 1200  'swaylock -e -f -i /home/jbo/Pictures/wallpaper/lock001.jpg' \
+         timeout 1200  'swaylock -e -f -i /home/jbo/Pictures/keys.png' \
          timeout 2400 'swaymsg "output * dpms off"' \
               resume  'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -e -f -i /home/jbo/Pictures/wallpaper/lock001.jpg'
+         before-sleep 'swaylock -e -f -i /home/jbo/Pictures/keys.png'
 
 for_window [class="Chromium"] inhibit_idle fullscreen
 for_window [app_id="firefox"] inhibit_idle fullscreen
@@ -270,3 +269,4 @@ bar {
 	workspace_buttons yes
 }
 
+include "config.d/$(hostnamectl hostname)"
