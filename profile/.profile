@@ -1,10 +1,10 @@
-EDITOR=nvim
-SUDO_EDITOR=$EDITOR
-DIFFPROG="$EDITOR -d"
+export EDITOR=nvim
+export SUDO_EDITOR=$EDITOR
+export DIFFPROG="$EDITOR -d"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    EXPORT PATH="$HOME/.local/bin:$PATH"
 fi
 
 # Set ssh agent socket to socket created by ssh-agent user service
