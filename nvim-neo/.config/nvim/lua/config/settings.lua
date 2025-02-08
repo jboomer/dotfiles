@@ -26,8 +26,21 @@ vim.opt.updatetime = 250
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = 'menuone,noselect'
 
+-- Tab settings
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+vim.opt.softtabstop = -1
+vim.opt.tabstop = 4
+
 -- Highlight cursor line
 vim.opt.cursorline = true
+
+-- Yank to system clipboard
+vim.opt.clipboard = "unnamedplus"
+
+-- Full color support
+vim.opt.termguicolors = true
 
 -- Diagnostic settings
 vim.diagnostic.config {
