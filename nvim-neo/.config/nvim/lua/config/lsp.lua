@@ -34,4 +34,5 @@ vim.lsp.enable({
 	"clangd",
 	"lua_ls",
 	"pyright",
+	"bitbake_ls",
 })
