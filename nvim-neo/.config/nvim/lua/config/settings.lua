@@ -4,9 +4,6 @@ vim.opt.hlsearch = false
 -- Make line numbers default
 vim.opt.number = true
 
--- Enable mouse mode
-vim.opt.mouse = 'a'
-
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -29,6 +26,7 @@ vim.opt.completeopt = 'menuone,noselect'
 -- Tab settings
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 4
+vim.opt.shiftround = true
 vim.opt.smartindent = true
 vim.opt.softtabstop = -1
 vim.opt.tabstop = 4

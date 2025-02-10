@@ -9,6 +9,7 @@ vim.keymap.set("n", "<leader>Q", vim.diagnostic.setqflist)
 -- Fuzzy finding
 vim.keymap.set("n", "<C-p>", require("fzf-lua").files)
 vim.keymap.set("n", "<C-g>", require("fzf-lua").grep)
+vim.keymap.set("n", "<C-l>", require("fzf-lua").live_grep)
 vim.keymap.set("n", "<C-\\>", require("fzf-lua").buffers)
 
 -- oil
