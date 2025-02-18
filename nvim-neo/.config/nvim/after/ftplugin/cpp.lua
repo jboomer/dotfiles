@@ -1,2 +1,2 @@
-vim.opt_local.expandtab = false
-vim.opt_local.tabstop = 4
+vim.bo.expandtab = false
+vim.bo.tabstop = 4
