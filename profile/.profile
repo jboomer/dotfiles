@@ -4,7 +4,7 @@ export DIFFPROG="$EDITOR -d"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    EXPORT PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # Set ssh agent socket to socket created by ssh-agent user service
