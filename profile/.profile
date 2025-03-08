@@ -1,6 +1,7 @@
 export EDITOR=nvim
 export SUDO_EDITOR=$EDITOR
 export DIFFPROG="$EDITOR -d"
+export MANPAGER="nvim +Man!"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
