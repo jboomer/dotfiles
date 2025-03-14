@@ -20,7 +20,7 @@ shopt -s globstar
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+PS1='\[\033[0;92m\]\u@\h\[\033[0m\]:\[\033[0;94m\]\w\[\033[00m\]\$ '
 
 
 # enable color support of ls and also add handy aliases

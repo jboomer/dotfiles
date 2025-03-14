@@ -37,6 +37,9 @@ vim.opt.cursorline = true
 -- Yank to system clipboard
 vim.opt.clipboard = "unnamedplus"
 
+-- Background hint
+vim.opt.background = "dark"
+
 -- Full color support
 vim.opt.termguicolors = true
 
