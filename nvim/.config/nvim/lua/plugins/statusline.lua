@@ -5,6 +5,7 @@ return {
       options = {
         icons_enabled = false,
         theme = "auto",
+        disabled_filetypes = {"man"},
       },
       sections = {
            lualine_a = {"mode"},

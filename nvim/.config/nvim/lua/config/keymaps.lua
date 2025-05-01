@@ -14,3 +14,7 @@ vim.keymap.set("n", "<C-\\>", require("fzf-lua").buffers)
 
 -- oil
 vim.keymap.set("n", "-", function() require("oil").open() end, { desc = "Open parent directory" })
+
+-- Navigate wrapped lines
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")

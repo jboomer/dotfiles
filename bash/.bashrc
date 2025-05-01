@@ -17,8 +17,8 @@ shopt -s histappend
 shopt -s globstar
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 PS1='\[\033[0;92m\]\u@\h\[\033[0m\]:\[\033[0;94m\]\w\[\033[00m\]\$ '
 
