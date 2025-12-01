@@ -8,9 +8,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Set ssh agent socket to socket created by ssh-agent user service
-# Do not overwrite if remote login through ssh
-if [[ -z "${SSH_CONNECTION}" ]]; then
-    export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+# Use gpg agent as ssh-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
-
