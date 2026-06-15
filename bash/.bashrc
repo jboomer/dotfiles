@@ -39,14 +39,18 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+if [ -f /usr/share/bash-completion/completions/git ]; then
+	source /usr/share/bash-completion/completions/git
+fi
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	source /usr/share/bash-completion/bash_completion
+fi
+
 
 # Set vi-style mode!
 set -o vi

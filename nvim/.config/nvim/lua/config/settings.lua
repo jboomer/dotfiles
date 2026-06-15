@@ -43,6 +43,8 @@ vim.opt.background = "dark"
 -- Full color support
 vim.opt.termguicolors = true
 
+vim.opt.foldenable = false
+
 -- Diagnostic settings
 vim.diagnostic.config {
   virtual_text = false,
